@@ -40,7 +40,7 @@ namespace JKL.Banking.UI
             set { depositId = value; }
         }
 
-
+        // Changes title of form based on screen mode
         public frmDeposit(ScreenMode screenMode)
         {
             InitializeComponent();
@@ -50,6 +50,7 @@ namespace JKL.Banking.UI
 
         private void frmDeposit_Load(object sender, EventArgs e)
         {
+            // Fills text input boxes with correct customer deposit data
             if (screenMode == ScreenMode.Edit)
             {
                 txtDepositAmount.Text = customer.Deposits[depositId].DepositAmount.ToString();
@@ -61,21 +62,37 @@ namespace JKL.Banking.UI
         {
             try
             {
+                // Adds input deposit data to deposit data grid view
                 if (screenMode == ScreenMode.Add)
                 {
-                    Deposit deposit = new Deposit();
+                    if (double.TryParse(txtDepositAmount.Text, out double depositAmount))
+                    {
+                        Deposit deposit = new Deposit();
 
-                    // Ternary operation
-                    deposit.DepositId = customer.Deposits.Any() ? customer.Deposits.Max(a => a.DepositId) + 1 : 1;
-                    deposit.DepositAmount = double.Parse(txtDepositAmount.Text);
-                    deposit.DepositDate = dtpDepositDate.Value.Date;
+                        // Ternary operation to increment id number
+                        deposit.DepositId = customer.Deposits.Any() ? customer.Deposits.Max(a => a.DepositId) + 1 : 1;
+                        deposit.DepositAmount = depositAmount;
+                        deposit.DepositDate = dtpDepositDate.Value.Date;
 
-                    customer.Deposits.Add(deposit);
+                        customer.Deposits.Add(deposit);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Invalid deposit amount. Enter a valid number.");
+                    }
                 }
+                // Modifies deposit data on deposit data grid view
                 else if (screenMode == ScreenMode.Edit)
                 {
-                    customer.Deposits[DepositId].DepositAmount = double.Parse(txtDepositAmount.Text);
-                    customer.Deposits[DepositId].DepositDate = DateTime.Parse(dtpDepositDate.Text);
+                    if (double.TryParse(txtDepositAmount.Text, out double depositAmount))
+                    {
+                        customer.Deposits[DepositId].DepositAmount = depositAmount;
+                        customer.Deposits[DepositId].DepositDate = DateTime.Parse(dtpDepositDate.Text);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Invalid deposit amount. Enter a valid number.");
+                    }
                 }
 
                 this.Close();

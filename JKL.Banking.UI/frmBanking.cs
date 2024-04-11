@@ -22,6 +22,7 @@ namespace JKL.Banking.UI
                 lblStatus.ForeColor = Color.Black;
                 lblStatus.Text = string.Empty;
 
+                // Populates listbox with customer info
                 customers = CustomerManager.Populate();
 
                 Refresh();
@@ -36,6 +37,7 @@ namespace JKL.Banking.UI
 
         private void Refresh()
         {
+            // Refreshes customer listbox
             lbxCustomers.DataSource = null;
             lbxCustomers.DataSource = customers;
             lbxCustomers.DisplayMember = "FullName";
@@ -50,14 +52,18 @@ namespace JKL.Banking.UI
 
                 frmDeposit depositForm = new frmDeposit(ScreenMode.Add);
 
+                // Checks if customer is selected
                 if (lbxCustomers.SelectedIndex >= 0)
                 {
+                    // Sends customer info to deposit form
                     depositForm.Customer = customers[lbxCustomers.SelectedIndex];
                     depositForm.ShowDialog(); 
 
+                    // Updates datagridview
                     dgvDeposits.DataSource = null;
                     dgvDeposits.DataSource = customers[lbxCustomers.SelectedIndex].Deposits;
 
+                    // Hides ID column and maintains column width
                     AutoFillColWidth(dgvDeposits);
                 }
                 else
@@ -81,18 +87,21 @@ namespace JKL.Banking.UI
 
                 frmDeposit depositForm = new frmDeposit(ScreenMode.Edit);
 
+                // Checks if customer is selected
                 if (lbxCustomers.SelectedIndex >= 0 
                     && dgvDeposits.CurrentRow != null 
                     && dgvDeposits.CurrentRow.Index >= 0)
                 {
+                    // Sends customer data to deposit form
                     depositForm.Customer = customers[lbxCustomers.SelectedIndex];
                     depositForm.DepositId = dgvDeposits.CurrentRow.Index;
                     depositForm.ShowDialog();
 
+                    // Updates values in data grid view
                     dgvDeposits.DataSource = null;
                     dgvDeposits.DataSource = customers[lbxCustomers.SelectedIndex].Deposits;
                     
-
+                    // Hides ID column and maintains column width
                     AutoFillColWidth(dgvDeposits);
                 }
                 else
@@ -116,14 +125,18 @@ namespace JKL.Banking.UI
 
                 frmWithdrawal withdrawalForm = new frmWithdrawal(ScreenMode.Add);
 
+                // Checks if a customer is selected
                 if (lbxCustomers.SelectedIndex >= 0)
                 {
+                    // Sends customer id to the withdrawalForm for correct data
                     withdrawalForm.Customer = customers[lbxCustomers.SelectedIndex];
                     withdrawalForm.ShowDialog();
 
+                    // Resets data source to show updated values
                     dgvWithdrawals.DataSource = null;
                     dgvWithdrawals.DataSource = customers[lbxCustomers.SelectedIndex].Withdrawals;
 
+                    // Hides ID column and maintains column width
                     AutoFillColWidth(dgvWithdrawals);
                 }
                 else

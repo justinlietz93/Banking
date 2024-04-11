@@ -32,6 +32,7 @@ namespace JKL.Banking.UI
             set { withdrawalId = value; }
         }
 
+        // Changes title of form based on screen mode
         public frmWithdrawal(ScreenMode screenMode)
         {
             InitializeComponent();
@@ -41,6 +42,7 @@ namespace JKL.Banking.UI
 
         private void frmWithdrawal_Load(object sender, EventArgs e)
         {
+            // Fills in input boxes with correct customer data
             if (screenMode == ScreenMode.Edit)
             {
                 txtWithdrawalAmount.Text = customer.Withdrawals[withdrawalId].WithdrawalAmount.ToString();
@@ -52,21 +54,37 @@ namespace JKL.Banking.UI
         {
             try
             {
+                // Adds data to withdrawal data grid view from input
                 if (screenMode == ScreenMode.Add)
                 {
-                    Withdrawal withdrawal = new Withdrawal();
+                    if (double.TryParse(txtWithdrawalAmount.Text, out double withdrawalAmount))
+                    {
+                        Withdrawal withdrawal = new Withdrawal();
 
-                    // Ternary operation
-                    withdrawal.WithdrawalId = customer.Withdrawals.Any() ? customer.Withdrawals.Max(a => a.WithdrawalId) + 1 : 1;
-                    withdrawal.WithdrawalAmount = double.Parse(txtWithdrawalAmount.Text);
-                    withdrawal.WithdrawalDate = dtpWithdrawalDate.Value.Date;
+                        // Ternary operation
+                        withdrawal.WithdrawalId = customer.Withdrawals.Any() ? customer.Withdrawals.Max(a => a.WithdrawalId) + 1 : 1;
+                        withdrawal.WithdrawalAmount = withdrawalAmount;
+                        withdrawal.WithdrawalDate = dtpWithdrawalDate.Value.Date;
 
-                    customer.Withdrawals.Add(withdrawal);
+                        customer.Withdrawals.Add(withdrawal);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Invalid withdrawal amount. Enter a valid number.");
+                    }
                 }
+                // Modifies customer information for withdrawal data grid view
                 else if (screenMode == ScreenMode.Edit)
                 {
-                    customer.Withdrawals[WithdrawalId].WithdrawalAmount = double.Parse(txtWithdrawalAmount.Text);
-                    customer.Withdrawals[WithdrawalId].WithdrawalDate = DateTime.Parse(dtpWithdrawalDate.Text);
+                    if (double.TryParse(txtWithdrawalAmount.Text, out double withdrawalAmount))
+                    {
+                        customer.Withdrawals[WithdrawalId].WithdrawalAmount = withdrawalAmount;
+                        customer.Withdrawals[WithdrawalId].WithdrawalDate = DateTime.Parse(dtpWithdrawalDate.Text);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Invalid withdrawal amount. Enter a valid number.");
+                    }
                 }
 
                 this.Close();
@@ -74,9 +92,9 @@ namespace JKL.Banking.UI
             }
             catch (Exception)
             {
-
                 throw;
             }
         }
+
     }
 }

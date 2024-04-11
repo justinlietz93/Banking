@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace JKL.Banking.BL
 {
-    internal class WithdrawalManager
+    public class WithdrawalManager
     {
         public static List<Withdrawal> Populate(int customerId)
         {

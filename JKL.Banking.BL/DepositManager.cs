@@ -8,7 +8,7 @@ using static System.Net.Mime.MediaTypeNames;
 
 namespace JKL.Banking.BL
 {
-    internal class DepositManager
+    public class DepositManager
     {
         public static List<Deposit> Populate(int customerId)
         {

@@ -301,6 +301,7 @@
             Controls.Add(lblDeposits);
             Controls.Add(lblCustomers);
             Name = "frmBanking";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Customer Information";
             Load += frmBanking_Load;
             statusStrip1.ResumeLayout(false);
