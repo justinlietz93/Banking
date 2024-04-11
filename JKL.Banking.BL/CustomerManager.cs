@@ -21,10 +21,24 @@ namespace JKL.Banking.BL
                 Customer customer2 = new Customer();
                 Customer customer3 = new Customer();
 
-                // Create IDs for customers
+                // Create data for customers
                 customer1.ID = 1;
+                customer1.FirstName = "John";
+                customer1.LastName = "Cena";
+                customer1.SSN = "123-456-7890";
+                customer1.BirthDate = new DateTime(1985, 7, 10);
+
                 customer2.ID = 2;
+                customer2.FirstName = "Dan";
+                customer2.LastName = "Tired";
+                customer2.SSN = "111-111-1111";
+                customer2.BirthDate = new DateTime(1990, 5, 15);
+
                 customer3.ID = 3;
+                customer3.FirstName = "Amanda";
+                customer3.LastName = "Huggenkis";
+                customer3.SSN = "123-555-9999";
+                customer3.BirthDate = new DateTime(1988, 12, 20);
 
                 // Populate deposit data for customers
                 customer1.Deposits = DepositManager.Populate(customer1.ID);

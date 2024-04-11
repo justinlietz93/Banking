@@ -30,8 +30,8 @@
         {
             lblWithdrawalAmount = new Label();
             lblWithdrawalDate = new Label();
-            textBox1 = new TextBox();
-            dateTimePicker1 = new DateTimePicker();
+            txtWithdrawalAmount = new TextBox();
+            dtpWithdrawalDate = new DateTimePicker();
             btnSave = new Button();
             SuspendLayout();
             // 
@@ -53,20 +53,20 @@
             lblWithdrawalDate.TabIndex = 1;
             lblWithdrawalDate.Text = "Withdrawal Date";
             // 
-            // textBox1
+            // txtWithdrawalAmount
             // 
-            textBox1.BorderStyle = BorderStyle.FixedSingle;
-            textBox1.Location = new Point(157, 11);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(129, 23);
-            textBox1.TabIndex = 2;
+            txtWithdrawalAmount.BorderStyle = BorderStyle.FixedSingle;
+            txtWithdrawalAmount.Location = new Point(157, 11);
+            txtWithdrawalAmount.Name = "txtWithdrawalAmount";
+            txtWithdrawalAmount.Size = new Size(129, 23);
+            txtWithdrawalAmount.TabIndex = 2;
             // 
-            // dateTimePicker1
+            // dtpWithdrawalDate
             // 
-            dateTimePicker1.Location = new Point(157, 55);
-            dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(206, 23);
-            dateTimePicker1.TabIndex = 3;
+            dtpWithdrawalDate.Location = new Point(157, 55);
+            dtpWithdrawalDate.Name = "dtpWithdrawalDate";
+            dtpWithdrawalDate.Size = new Size(206, 23);
+            dtpWithdrawalDate.TabIndex = 3;
             // 
             // btnSave
             // 
@@ -76,6 +76,7 @@
             btnSave.TabIndex = 4;
             btnSave.Text = "Save";
             btnSave.UseVisualStyleBackColor = true;
+            btnSave.Click += btnSave_Click;
             // 
             // frmWithdrawal
             // 
@@ -83,13 +84,14 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(375, 134);
             Controls.Add(btnSave);
-            Controls.Add(dateTimePicker1);
-            Controls.Add(textBox1);
+            Controls.Add(dtpWithdrawalDate);
+            Controls.Add(txtWithdrawalAmount);
             Controls.Add(lblWithdrawalDate);
             Controls.Add(lblWithdrawalAmount);
             Name = "frmWithdrawal";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Withdrawal";
+            Load += frmWithdrawal_Load;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -98,8 +100,8 @@
 
         private Label lblWithdrawalAmount;
         private Label lblWithdrawalDate;
-        private TextBox textBox1;
-        private DateTimePicker dateTimePicker1;
+        private TextBox txtWithdrawalAmount;
+        private DateTimePicker dtpWithdrawalDate;
         private Button btnSave;
     }
 }

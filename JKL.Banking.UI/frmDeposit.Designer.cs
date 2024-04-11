@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             btnSave = new Button();
-            dateTimePicker1 = new DateTimePicker();
-            textBox1 = new TextBox();
+            dtpDepositDate = new DateTimePicker();
+            txtDepositAmount = new TextBox();
             lblDepositDate = new Label();
             lblDepositAmount = new Label();
             SuspendLayout();
@@ -43,21 +43,22 @@
             btnSave.TabIndex = 9;
             btnSave.Text = "Save";
             btnSave.UseVisualStyleBackColor = true;
+            btnSave.Click += btnSave_Click;
             // 
-            // dateTimePicker1
+            // dtpDepositDate
             // 
-            dateTimePicker1.Location = new Point(146, 56);
-            dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(213, 23);
-            dateTimePicker1.TabIndex = 8;
+            dtpDepositDate.Location = new Point(146, 56);
+            dtpDepositDate.Name = "dtpDepositDate";
+            dtpDepositDate.Size = new Size(213, 23);
+            dtpDepositDate.TabIndex = 8;
             // 
-            // textBox1
+            // txtDepositAmount
             // 
-            textBox1.BorderStyle = BorderStyle.FixedSingle;
-            textBox1.Location = new Point(146, 12);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(129, 23);
-            textBox1.TabIndex = 7;
+            txtDepositAmount.BorderStyle = BorderStyle.FixedSingle;
+            txtDepositAmount.Location = new Point(146, 12);
+            txtDepositAmount.Name = "txtDepositAmount";
+            txtDepositAmount.Size = new Size(129, 23);
+            txtDepositAmount.TabIndex = 7;
             // 
             // lblDepositDate
             // 
@@ -83,8 +84,8 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(371, 137);
             Controls.Add(btnSave);
-            Controls.Add(dateTimePicker1);
-            Controls.Add(textBox1);
+            Controls.Add(dtpDepositDate);
+            Controls.Add(txtDepositAmount);
             Controls.Add(lblDepositDate);
             Controls.Add(lblDepositAmount);
             Name = "frmDeposit";
@@ -98,8 +99,8 @@
         #endregion
 
         private Button btnSave;
-        private DateTimePicker dateTimePicker1;
-        private TextBox textBox1;
+        private DateTimePicker dtpDepositDate;
+        private TextBox txtDepositAmount;
         private Label lblDepositDate;
         private Label lblDepositAmount;
     }

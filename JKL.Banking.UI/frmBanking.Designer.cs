@@ -28,28 +28,24 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             lblCustomers = new Label();
             lblDeposits = new Label();
             lblWithdrawals = new Label();
             statusStrip1 = new StatusStrip();
             lblStatus = new ToolStripStatusLabel();
-            dataGridView1 = new DataGridView();
-            DepositId = new DataGridViewTextBoxColumn();
-            DepositAmount = new DataGridViewTextBoxColumn();
-            DepositDate = new DataGridViewTextBoxColumn();
-            dataGridView2 = new DataGridView();
-            WithdrawalId = new DataGridViewTextBoxColumn();
-            WithdrawalAmount = new DataGridViewTextBoxColumn();
-            WithdrawalDate = new DataGridViewTextBoxColumn();
-            listBox1 = new ListBox();
+            dgvDeposits = new DataGridView();
+            dgvWithdrawals = new DataGridView();
+            lbxCustomers = new ListBox();
             lblFName = new Label();
             lblLName = new Label();
             lblSSN = new Label();
             lblId = new Label();
             lblBirthDate = new Label();
-            textBox1 = new TextBox();
-            textBox2 = new TextBox();
-            textBox3 = new TextBox();
+            txtFirstName = new TextBox();
+            txtLastName = new TextBox();
+            txtSSN = new TextBox();
             lblMemberID = new Label();
             dtpBirthDate = new DateTimePicker();
             btnAddDeposit = new Button();
@@ -58,8 +54,8 @@
             btnEditWithdrawal = new Button();
             btnExit = new Button();
             statusStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvDeposits).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvWithdrawals).BeginInit();
             SuspendLayout();
             // 
             // lblCustomers
@@ -76,7 +72,7 @@
             // 
             lblDeposits.AutoSize = true;
             lblDeposits.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            lblDeposits.Location = new Point(21, 234);
+            lblDeposits.Location = new Point(21, 211);
             lblDeposits.Name = "lblDeposits";
             lblDeposits.Size = new Size(62, 17);
             lblDeposits.TabIndex = 1;
@@ -86,7 +82,7 @@
             // 
             lblWithdrawals.AutoSize = true;
             lblWithdrawals.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            lblWithdrawals.Location = new Point(21, 443);
+            lblWithdrawals.Location = new Point(21, 416);
             lblWithdrawals.Name = "lblWithdrawals";
             lblWithdrawals.Size = new Size(85, 17);
             lblWithdrawals.TabIndex = 2;
@@ -97,7 +93,7 @@
             statusStrip1.Items.AddRange(new ToolStripItem[] { lblStatus });
             statusStrip1.Location = new Point(0, 631);
             statusStrip1.Name = "statusStrip1";
-            statusStrip1.Size = new Size(589, 22);
+            statusStrip1.Size = new Size(632, 22);
             statusStrip1.TabIndex = 3;
             statusStrip1.Text = "statusStrip1";
             // 
@@ -106,70 +102,40 @@
             lblStatus.Name = "lblStatus";
             lblStatus.Size = new Size(0, 17);
             // 
-            // dataGridView1
+            // dgvDeposits
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { DepositId, DepositAmount, DepositDate });
-            dataGridView1.Location = new Point(21, 254);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowTemplate.Height = 25;
-            dataGridView1.Size = new Size(546, 150);
-            dataGridView1.TabIndex = 4;
+            dataGridViewCellStyle1.BackColor = Color.FromArgb(192, 255, 192);
+            dataGridViewCellStyle1.SelectionBackColor = Color.Green;
+            dgvDeposits.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dgvDeposits.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvDeposits.Location = new Point(21, 231);
+            dgvDeposits.Name = "dgvDeposits";
+            dgvDeposits.RowTemplate.Height = 25;
+            dgvDeposits.Size = new Size(590, 150);
+            dgvDeposits.TabIndex = 4;
             // 
-            // DepositId
+            // dgvWithdrawals
             // 
-            DepositId.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            DepositId.HeaderText = "DepositId";
-            DepositId.Name = "DepositId";
+            dataGridViewCellStyle2.BackColor = Color.FromArgb(255, 192, 192);
+            dataGridViewCellStyle2.ForeColor = Color.Black;
+            dataGridViewCellStyle2.SelectionBackColor = Color.Firebrick;
+            dgvWithdrawals.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dgvWithdrawals.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvWithdrawals.Location = new Point(21, 439);
+            dgvWithdrawals.Name = "dgvWithdrawals";
+            dgvWithdrawals.RowTemplate.Height = 25;
+            dgvWithdrawals.Size = new Size(590, 150);
+            dgvWithdrawals.TabIndex = 5;
             // 
-            // DepositAmount
+            // lbxCustomers
             // 
-            DepositAmount.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            DepositAmount.HeaderText = "DepositAmount";
-            DepositAmount.Name = "DepositAmount";
-            // 
-            // DepositDate
-            // 
-            DepositDate.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            DepositDate.HeaderText = "DepositDate";
-            DepositDate.Name = "DepositDate";
-            // 
-            // dataGridView2
-            // 
-            dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView2.Columns.AddRange(new DataGridViewColumn[] { WithdrawalId, WithdrawalAmount, WithdrawalDate });
-            dataGridView2.Location = new Point(21, 443);
-            dataGridView2.Name = "dataGridView2";
-            dataGridView2.RowTemplate.Height = 25;
-            dataGridView2.Size = new Size(546, 150);
-            dataGridView2.TabIndex = 5;
-            // 
-            // WithdrawalId
-            // 
-            WithdrawalId.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            WithdrawalId.HeaderText = "WithdrawalId";
-            WithdrawalId.Name = "WithdrawalId";
-            // 
-            // WithdrawalAmount
-            // 
-            WithdrawalAmount.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            WithdrawalAmount.HeaderText = "WithdrawalAmount";
-            WithdrawalAmount.Name = "WithdrawalAmount";
-            // 
-            // WithdrawalDate
-            // 
-            WithdrawalDate.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            WithdrawalDate.HeaderText = "WithdrawalDate";
-            WithdrawalDate.Name = "WithdrawalDate";
-            // 
-            // listBox1
-            // 
-            listBox1.FormattingEnabled = true;
-            listBox1.ItemHeight = 15;
-            listBox1.Location = new Point(21, 27);
-            listBox1.Name = "listBox1";
-            listBox1.Size = new Size(279, 169);
-            listBox1.TabIndex = 6;
+            lbxCustomers.FormattingEnabled = true;
+            lbxCustomers.ItemHeight = 15;
+            lbxCustomers.Location = new Point(21, 27);
+            lbxCustomers.Name = "lbxCustomers";
+            lbxCustomers.Size = new Size(279, 169);
+            lbxCustomers.TabIndex = 6;
+            lbxCustomers.SelectedIndexChanged += lbxCustomers_SelectedIndexChanged;
             // 
             // lblFName
             // 
@@ -216,37 +182,37 @@
             lblBirthDate.TabIndex = 11;
             lblBirthDate.Text = "Birth Date:";
             // 
-            // textBox1
+            // txtFirstName
             // 
-            textBox1.BorderStyle = BorderStyle.FixedSingle;
-            textBox1.Location = new Point(401, 25);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(152, 23);
-            textBox1.TabIndex = 12;
+            txtFirstName.BorderStyle = BorderStyle.FixedSingle;
+            txtFirstName.Location = new Point(401, 25);
+            txtFirstName.Name = "txtFirstName";
+            txtFirstName.Size = new Size(210, 23);
+            txtFirstName.TabIndex = 12;
             // 
-            // textBox2
+            // txtLastName
             // 
-            textBox2.BorderStyle = BorderStyle.FixedSingle;
-            textBox2.Location = new Point(401, 63);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(152, 23);
-            textBox2.TabIndex = 13;
+            txtLastName.BorderStyle = BorderStyle.FixedSingle;
+            txtLastName.Location = new Point(401, 63);
+            txtLastName.Name = "txtLastName";
+            txtLastName.Size = new Size(210, 23);
+            txtLastName.TabIndex = 13;
             // 
-            // textBox3
+            // txtSSN
             // 
-            textBox3.BorderStyle = BorderStyle.FixedSingle;
-            textBox3.Location = new Point(401, 101);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(152, 23);
-            textBox3.TabIndex = 14;
-            textBox3.TextAlign = HorizontalAlignment.Right;
+            txtSSN.BorderStyle = BorderStyle.FixedSingle;
+            txtSSN.Location = new Point(401, 101);
+            txtSSN.Name = "txtSSN";
+            txtSSN.Size = new Size(210, 23);
+            txtSSN.TabIndex = 14;
+            txtSSN.TextAlign = HorizontalAlignment.Right;
             // 
             // lblMemberID
             // 
             lblMemberID.BorderStyle = BorderStyle.FixedSingle;
             lblMemberID.Location = new Point(401, 141);
             lblMemberID.Name = "lblMemberID";
-            lblMemberID.Size = new Size(152, 23);
+            lblMemberID.Size = new Size(210, 23);
             lblMemberID.TabIndex = 15;
             lblMemberID.TextAlign = ContentAlignment.MiddleRight;
             // 
@@ -254,14 +220,14 @@
             // 
             dtpBirthDate.Location = new Point(401, 173);
             dtpBirthDate.Name = "dtpBirthDate";
-            dtpBirthDate.Size = new Size(152, 23);
+            dtpBirthDate.Size = new Size(210, 23);
             dtpBirthDate.TabIndex = 16;
             // 
             // btnAddDeposit
             // 
-            btnAddDeposit.Location = new Point(367, 410);
+            btnAddDeposit.Location = new Point(323, 387);
             btnAddDeposit.Name = "btnAddDeposit";
-            btnAddDeposit.Size = new Size(97, 23);
+            btnAddDeposit.Size = new Size(141, 23);
             btnAddDeposit.TabIndex = 17;
             btnAddDeposit.Text = "Add Deposit";
             btnAddDeposit.UseVisualStyleBackColor = true;
@@ -269,9 +235,9 @@
             // 
             // btnEditDeposit
             // 
-            btnEditDeposit.Location = new Point(470, 410);
+            btnEditDeposit.Location = new Point(470, 387);
             btnEditDeposit.Name = "btnEditDeposit";
-            btnEditDeposit.Size = new Size(97, 23);
+            btnEditDeposit.Size = new Size(141, 23);
             btnEditDeposit.TabIndex = 18;
             btnEditDeposit.Text = "Edit Deposit";
             btnEditDeposit.UseVisualStyleBackColor = true;
@@ -279,9 +245,9 @@
             // 
             // btnAddWithdrawal
             // 
-            btnAddWithdrawal.Location = new Point(260, 599);
+            btnAddWithdrawal.Location = new Point(172, 599);
             btnAddWithdrawal.Name = "btnAddWithdrawal";
-            btnAddWithdrawal.Size = new Size(110, 23);
+            btnAddWithdrawal.Size = new Size(154, 23);
             btnAddWithdrawal.TabIndex = 19;
             btnAddWithdrawal.Text = "Add Withdrawal";
             btnAddWithdrawal.UseVisualStyleBackColor = true;
@@ -289,9 +255,9 @@
             // 
             // btnEditWithdrawal
             // 
-            btnEditWithdrawal.Location = new Point(376, 599);
+            btnEditWithdrawal.Location = new Point(332, 599);
             btnEditWithdrawal.Name = "btnEditWithdrawal";
-            btnEditWithdrawal.Size = new Size(110, 23);
+            btnEditWithdrawal.Size = new Size(154, 23);
             btnEditWithdrawal.TabIndex = 20;
             btnEditWithdrawal.Text = "Edit Withdrawal";
             btnEditWithdrawal.UseVisualStyleBackColor = true;
@@ -301,7 +267,7 @@
             // 
             btnExit.Location = new Point(492, 599);
             btnExit.Name = "btnExit";
-            btnExit.Size = new Size(75, 23);
+            btnExit.Size = new Size(119, 23);
             btnExit.TabIndex = 21;
             btnExit.Text = "Exit";
             btnExit.UseVisualStyleBackColor = true;
@@ -311,7 +277,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(589, 653);
+            ClientSize = new Size(632, 653);
             Controls.Add(btnExit);
             Controls.Add(btnEditWithdrawal);
             Controls.Add(btnAddWithdrawal);
@@ -319,27 +285,28 @@
             Controls.Add(btnAddDeposit);
             Controls.Add(dtpBirthDate);
             Controls.Add(lblMemberID);
-            Controls.Add(textBox3);
-            Controls.Add(textBox2);
-            Controls.Add(textBox1);
+            Controls.Add(txtSSN);
+            Controls.Add(txtLastName);
+            Controls.Add(txtFirstName);
             Controls.Add(lblBirthDate);
             Controls.Add(lblId);
             Controls.Add(lblSSN);
             Controls.Add(lblLName);
             Controls.Add(lblFName);
-            Controls.Add(listBox1);
-            Controls.Add(dataGridView2);
-            Controls.Add(dataGridView1);
+            Controls.Add(lbxCustomers);
+            Controls.Add(dgvWithdrawals);
+            Controls.Add(dgvDeposits);
             Controls.Add(statusStrip1);
             Controls.Add(lblWithdrawals);
             Controls.Add(lblDeposits);
             Controls.Add(lblCustomers);
             Name = "frmBanking";
             Text = "Customer Information";
+            Load += frmBanking_Load;
             statusStrip1.ResumeLayout(false);
             statusStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvDeposits).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvWithdrawals).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -351,17 +318,17 @@
         private Label lblWithdrawals;
         private StatusStrip statusStrip1;
         private ToolStripStatusLabel lblStatus;
-        private DataGridView dataGridView1;
-        private DataGridView dataGridView2;
-        private ListBox listBox1;
+        private DataGridView dgvDeposits;
+        private DataGridView dgvWithdrawals;
+        private ListBox lbxCustomers;
         private Label lblFName;
         private Label lblLName;
         private Label lblSSN;
         private Label lblId;
         private Label lblBirthDate;
-        private TextBox textBox1;
-        private TextBox textBox2;
-        private TextBox textBox3;
+        private TextBox txtFirstName;
+        private TextBox txtLastName;
+        private TextBox txtSSN;
         private Label lblMemberID;
         private DateTimePicker dtpBirthDate;
         private Button btnAddDeposit;
@@ -369,11 +336,5 @@
         private Button btnAddWithdrawal;
         private Button btnEditWithdrawal;
         private Button btnExit;
-        private DataGridViewTextBoxColumn DepositId;
-        private DataGridViewTextBoxColumn DepositAmount;
-        private DataGridViewTextBoxColumn DepositDate;
-        private DataGridViewTextBoxColumn WithdrawalId;
-        private DataGridViewTextBoxColumn WithdrawalAmount;
-        private DataGridViewTextBoxColumn WithdrawalDate;
     }
 }

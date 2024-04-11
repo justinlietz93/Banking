@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace JKL.Banking.BL.Models
 {
-    public class Customer
+    public class Customer : Person
     {
         #region Properties
         private int id;
