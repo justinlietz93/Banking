@@ -277,6 +277,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            AutoSize = true;
             ClientSize = new Size(632, 653);
             Controls.Add(btnExit);
             Controls.Add(btnEditWithdrawal);
@@ -300,6 +301,7 @@
             Controls.Add(lblWithdrawals);
             Controls.Add(lblDeposits);
             Controls.Add(lblCustomers);
+            FormBorderStyle = FormBorderStyle.Fixed3D;
             Name = "frmBanking";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Customer Information";

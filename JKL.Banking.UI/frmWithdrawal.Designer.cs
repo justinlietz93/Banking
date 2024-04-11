@@ -88,6 +88,7 @@
             Controls.Add(txtWithdrawalAmount);
             Controls.Add(lblWithdrawalDate);
             Controls.Add(lblWithdrawalAmount);
+            FormBorderStyle = FormBorderStyle.Fixed3D;
             Name = "frmWithdrawal";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Withdrawal";

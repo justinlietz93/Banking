@@ -88,6 +88,7 @@
             Controls.Add(txtDepositAmount);
             Controls.Add(lblDepositDate);
             Controls.Add(lblDepositAmount);
+            FormBorderStyle = FormBorderStyle.Fixed3D;
             Name = "frmDeposit";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Deposit";

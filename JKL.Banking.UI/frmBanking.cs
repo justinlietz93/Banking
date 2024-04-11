@@ -41,6 +41,9 @@ namespace JKL.Banking.UI
             lbxCustomers.DataSource = null;
             lbxCustomers.DataSource = customers;
             lbxCustomers.DisplayMember = "FullName";
+            int numCustomers = customers.Count;
+            lblStatus.ForeColor = Color.Blue;
+            lblStatus.Text = numCustomers + " customers loaded.";
         }
 
         private void btnAddDeposit_Click(object sender, EventArgs e)
