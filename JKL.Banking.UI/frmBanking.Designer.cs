@@ -113,6 +113,7 @@
             dgvDeposits.RowTemplate.Height = 25;
             dgvDeposits.Size = new Size(590, 150);
             dgvDeposits.TabIndex = 4;
+            dgvDeposits.CellContentClick += dgvDeposits_CellContentClick;
             // 
             // dgvWithdrawals
             // 
@@ -189,6 +190,7 @@
             txtFirstName.Name = "txtFirstName";
             txtFirstName.Size = new Size(210, 23);
             txtFirstName.TabIndex = 12;
+            txtFirstName.TextChanged += txtFirstName_TextChanged;
             // 
             // txtLastName
             // 
@@ -197,6 +199,7 @@
             txtLastName.Name = "txtLastName";
             txtLastName.Size = new Size(210, 23);
             txtLastName.TabIndex = 13;
+            txtLastName.TextChanged += txtLastName_TextChanged;
             // 
             // txtSSN
             // 
@@ -206,6 +209,7 @@
             txtSSN.Size = new Size(210, 23);
             txtSSN.TabIndex = 14;
             txtSSN.TextAlign = HorizontalAlignment.Right;
+            txtSSN.TextChanged += txtSSN_TextChanged;
             // 
             // lblMemberID
             // 
@@ -222,6 +226,7 @@
             dtpBirthDate.Name = "dtpBirthDate";
             dtpBirthDate.Size = new Size(210, 23);
             dtpBirthDate.TabIndex = 16;
+            dtpBirthDate.ValueChanged += dtpBirthDate_ValueChanged;
             // 
             // btnAddDeposit
             // 

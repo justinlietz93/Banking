@@ -60,7 +60,7 @@ namespace JKL.Banking.UI
                 {
                     // Sends customer info to deposit form
                     depositForm.Customer = customers[lbxCustomers.SelectedIndex];
-                    depositForm.ShowDialog(); 
+                    depositForm.ShowDialog();
 
                     // Updates datagridview
                     dgvDeposits.DataSource = null;
@@ -91,8 +91,8 @@ namespace JKL.Banking.UI
                 frmDeposit depositForm = new frmDeposit(ScreenMode.Edit);
 
                 // Checks if customer is selected
-                if (lbxCustomers.SelectedIndex >= 0 
-                    && dgvDeposits.CurrentRow != null 
+                if (lbxCustomers.SelectedIndex >= 0
+                    && dgvDeposits.CurrentRow != null
                     && dgvDeposits.CurrentRow.Index >= 0)
                 {
                     // Sends customer data to deposit form
@@ -103,7 +103,7 @@ namespace JKL.Banking.UI
                     // Updates values in data grid view
                     dgvDeposits.DataSource = null;
                     dgvDeposits.DataSource = customers[lbxCustomers.SelectedIndex].Deposits;
-                    
+
                     // Hides ID column and maintains column width
                     AutoFillColWidth(dgvDeposits);
                 }
@@ -241,6 +241,47 @@ namespace JKL.Banking.UI
 
             // Hide the deposit ID column
             window.Columns[0].Visible = false;
+        }
+
+        private void dgvDeposits_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void txtFirstName_TextChanged(object sender, EventArgs e)
+        {
+            // Get selected customer
+            Customer customer = customers[lbxCustomers.SelectedIndex];
+
+            customer.FirstName = txtFirstName.Text;
+            Refresh();
+        }
+
+        private void txtLastName_TextChanged(object sender, EventArgs e)
+        {
+            // Get selected customer
+            Customer customer = customers[lbxCustomers.SelectedIndex];
+
+            customer.LastName = txtLastName.Text;
+            Refresh();
+        }
+
+        private void txtSSN_TextChanged(object sender, EventArgs e)
+        {
+            // Get selected customer
+            Customer customer = customers[lbxCustomers.SelectedIndex];
+
+            customer.SSN = txtSSN.Text;
+            Refresh();
+        }
+
+        private void dtpBirthDate_ValueChanged(object sender, EventArgs e)
+        {
+            // Get selected customer
+            Customer customer = customers[lbxCustomers.SelectedIndex];
+
+            customer.BirthDate = dtpBirthDate.Value;    
+            Refresh();
         }
     }
 }
