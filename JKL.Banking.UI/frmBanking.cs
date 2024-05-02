@@ -345,7 +345,7 @@ namespace JKL.Banking.UI
                 lblStatus.Text = string.Empty;
 
                 Customer customer = new Customer();
-                customer.ID = customers.Count + 1;
+                customer.ID = customers.Max(c => c.ID) + 1;
                 SetProperties(customer);
 
                 customer.Deposits = new List<Deposit>();
