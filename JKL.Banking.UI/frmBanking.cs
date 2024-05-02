@@ -21,14 +21,15 @@ namespace JKL.Banking.UI
             try
             {
                 settings = Program.Configuration.GetSection("MySettings").Get<MySettings>();
+                this.Text = settings.Text;
 
 
                 lblStatus.ForeColor = Color.Black;
                 lblStatus.Text = string.Empty;
 
                 // Populates listbox with customer info
-                //customers = CustomerManager.ReadXML(settings.CustomerXMLFileName);
-                customers = CustomerManager.Populate();
+                customers = CustomerManager.ReadXML(settings.CustomerXMLFileName);
+                //customers = CustomerManager.Populate();
 
                 Refresh();
             }

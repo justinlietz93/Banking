@@ -15,9 +15,7 @@ namespace JKL.Banking.UI
         static void Main()
         {
             var builder = new ConfigurationBuilder()
-                .AddJsonFile("appsettings.json",
-                              optional: true,
-                              reloadOnChange: true);
+        .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true);
             Configuration = builder.Build();
 
             // To customize application configuration such as set high DPI settings or default font,
