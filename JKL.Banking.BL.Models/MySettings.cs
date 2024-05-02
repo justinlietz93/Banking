@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace JKL.ComputerWorld.BL.Models
+namespace JKL.Banking.BL.Models
 {
     public class MySettings
     {

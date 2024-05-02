@@ -1,10 +1,6 @@
 using JKL.Banking.BL;
 using JKL.Banking.BL.Models;
-using Microsoft.VisualBasic.Devices;
 using Microsoft.Extensions.Configuration;
-using System.Runtime;
-using System.Windows.Forms;
-using JKL.ComputerWorld.BL.Models;
 
 namespace JKL.Banking.UI
 {
@@ -25,6 +21,7 @@ namespace JKL.Banking.UI
             try
             {
                 settings = Program.Configuration.GetSection("MySettings").Get<MySettings>();
+
 
                 lblStatus.ForeColor = Color.Black;
                 lblStatus.Text = string.Empty;

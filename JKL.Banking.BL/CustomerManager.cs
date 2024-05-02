@@ -1,11 +1,5 @@
 ﻿using JKL.Banking.BL.Models;
 using JKL.Utility.PL;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml.Serialization;
 
 namespace JKL.Banking.BL
