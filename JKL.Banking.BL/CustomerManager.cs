@@ -1,9 +1,12 @@
 ﻿using JKL.Banking.BL.Models;
+using JKL.Utility.PL;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace JKL.Banking.BL
 {
@@ -57,11 +60,51 @@ namespace JKL.Banking.BL
 
                 return customers;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 throw;
             }
 
+        }
+
+        public static bool WriteXML(List<Customer> customers, string filePath)
+        {
+            try
+            {
+                FileIO.Delete(filePath);
+
+                XmlSerializer serializer = new XmlSerializer(typeof(List<Customer>));
+                TextWriter writer = new StreamWriter(filePath);
+                serializer.Serialize(writer, customers);
+                writer.Close();
+                writer = null;
+                serializer = null;
+                return true;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public static List<Customer> ReadXML(string xmlfilePath)
+        {
+            try
+            {
+                List<Customer> customers = new List<Customer>();
+                XmlSerializer serializer = new XmlSerializer(typeof(List<Customer>));
+                TextReader reader = new StreamReader(xmlfilePath);
+                customers.AddRange((List<Customer>)serializer.Deserialize(reader));
+                reader.Close();
+                reader = null;
+                serializer = null;
+                return customers;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
     }
 }

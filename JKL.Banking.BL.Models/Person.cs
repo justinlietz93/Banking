@@ -3,6 +3,14 @@
     public class Person
     {
         #region Properties
+        private int id;
+
+        public int ID
+        {
+            get { return id; }
+            set { id = value; }
+        }
+
         private string ssn;
 
         public string SSN

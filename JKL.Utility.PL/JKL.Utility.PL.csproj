@@ -6,9 +6,4 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\JKL.Banking.BL.Models\JKL.Banking.BL.Models.csproj" />
-    <ProjectReference Include="..\JKL.Utility.PL\JKL.Utility.PL.csproj" />
-  </ItemGroup>
-
 </Project>

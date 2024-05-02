@@ -9,13 +9,7 @@ namespace JKL.Banking.BL.Models
     public class Customer : Person
     {
         #region Properties
-        private int id;
 
-        public int ID
-        {
-            get { return id; }
-            set { id = value; }
-        }
 
         private List<Deposit> deposits;
 
