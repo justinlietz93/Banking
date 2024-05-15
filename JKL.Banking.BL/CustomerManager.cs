@@ -1,6 +1,11 @@
 ﻿using JKL.Banking.BL.Models;
 using JKL.Utility.PL;
+using System.Collections.Generic;
+using System.Data;
+using System.Net.NetworkInformation;
 using System.Xml.Serialization;
+using System.Data.SqlClient;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace JKL.Banking.BL
 {
@@ -100,5 +105,116 @@ namespace JKL.Banking.BL
                 throw;
             }
         }
+
+        public static List<Customer> Load()
+        {
+            try
+            {
+                List<Customer> customers = new List<Customer>();
+                Database db = new Database();
+                DataTable dt = new DataTable();
+
+                string sql = "SELECT * FROM tblCustomers";
+                SqlCommand sqlCommand = new SqlCommand(sql);
+
+                dt = db.Select(sqlCommand);
+
+                foreach (DataRow dr in dt.Rows)
+                {
+                    Customer customer = new Customer();
+                    customer.ID = Convert.ToInt32(dr["ID"]);
+
+                    customer.SSN = dr["SSN"].ToString();
+                    customer.FirstName = dr["FirstName"].ToString();
+                    customer.LastName = dr["LastName"].ToString();
+                    customer.BirthDate = Convert.ToDateTime(dr["BirthDate"]);
+
+                    customers.Add((customer));
+                }
+                return customers;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public static int Insert(Customer customer, bool rollback = false)
+        {
+            try
+            {
+                Database db = new Database();
+                SqlCommand sqlCommand = new SqlCommand();
+
+                string sql = "INSERT INTO tblCustomers (ID, SSN, FirstName, LastName, BirthDate)"
+                             + "VALUES (@ID, @SSN, @FirstName, @LastName @BirthDate)";
+
+                sqlCommand.CommandText = sql;
+                sqlCommand.Parameters.AddWithValue("@ID", customer.ID);
+                sqlCommand.Parameters.AddWithValue("@SSN", customer.SSN);
+                sqlCommand.Parameters.AddWithValue("@FirstName", customer.FirstName);
+                sqlCommand.Parameters.AddWithValue("@LastName", customer.LastName);
+                sqlCommand.Parameters.AddWithValue("@BirthDate", customer.BirthDate);
+
+                int results = db.Insert(sqlCommand, rollback);
+                return results;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public static int Update(Customer customer, bool rollback = false)
+        {
+            try
+            {
+                Database db = new Database();
+                SqlCommand sqlCommand = new SqlCommand();
+
+                string sql = "UPDATE tblCustomers"
+                           + "SET SSN = @SSN, "
+                           + "FirstName = @FirstName, "
+                           + "LastName = @CustID, "
+                           + "WHERE ID = @Id";
+
+                sqlCommand.CommandText = sql;
+                sqlCommand.Parameters.AddWithValue("@Id", customer.ID);
+                sqlCommand.Parameters.AddWithValue("@SSN", customer.SSN);
+                sqlCommand.Parameters.AddWithValue("@FirstName", customer.FirstName);
+                sqlCommand.Parameters.AddWithValue("@LastName", customer.LastName);
+                sqlCommand.Parameters.AddWithValue("@BirthDate", customer.BirthDate);
+
+                int results = db.Insert(sqlCommand, rollback);
+                return results;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public static int Delete(int id, bool rollback = false)
+        {
+            try
+            {
+                Database db = new Database();
+                SqlCommand sqlCommand = new SqlCommand();
+
+                string sql = "DELETE FROM tblCustomers WHERE ID = @Id";
+
+                sqlCommand.CommandText = sql;
+                sqlCommand.Parameters.AddWithValue("@Id", id);
+
+                int results = db.Delete(sqlCommand, rollback);
+                return results;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
     }
+
+
 }

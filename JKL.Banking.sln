@@ -11,7 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JKL.Banking.BL.Models", "JK
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JKL.Banking.BL.Test", "JKL.Banking.BL.Test\JKL.Banking.BL.Test.csproj", "{974C5171-78B8-43D7-915D-2947D47BF407}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JKL.Utility.PL", "JKL.Utility.PL\JKL.Utility.PL.csproj", "{81214A71-0574-4B61-9245-345C701BB0D6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JKL.Utility.PL", "JKL.Utility.PL\JKL.Utility.PL.csproj", "{81214A71-0574-4B61-9245-345C701BB0D6}"
+EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "JKL.Banking.DB", "JKL.Banking.DB\JKL.Banking.DB.sqlproj", "{176FC521-FB4D-4FFE-B43E-C66778B7C477}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,12 @@ Global
 		{81214A71-0574-4B61-9245-345C701BB0D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{81214A71-0574-4B61-9245-345C701BB0D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{81214A71-0574-4B61-9245-345C701BB0D6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{176FC521-FB4D-4FFE-B43E-C66778B7C477}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{176FC521-FB4D-4FFE-B43E-C66778B7C477}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{176FC521-FB4D-4FFE-B43E-C66778B7C477}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{176FC521-FB4D-4FFE-B43E-C66778B7C477}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{176FC521-FB4D-4FFE-B43E-C66778B7C477}.Release|Any CPU.Build.0 = Release|Any CPU
+		{176FC521-FB4D-4FFE-B43E-C66778B7C477}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

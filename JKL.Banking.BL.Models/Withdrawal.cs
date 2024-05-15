@@ -17,6 +17,14 @@ namespace JKL.Banking.BL.Models
             set { withdrawalId = value; }
         }
 
+        private int custId;
+
+        public int CustID
+        {
+            get { return custId; }
+            set { custId = value; }
+        }
+
         private double withdrawalAmount;
 
         public double WithdrawalAmount
