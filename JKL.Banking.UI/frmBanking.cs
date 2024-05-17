@@ -401,8 +401,33 @@ namespace JKL.Banking.UI
                 lblStatus.Text = string.Empty;
 
                 Customer customer = customers[lbxCustomers.SelectedIndex];
-                SetProperties(customer);
 
+                int maxId = 0;
+                // Get max id for all deposits and withdrawals in all computers
+                foreach(Customer c in customers)
+                {
+                    foreach(Deposit d in c.Deposits)
+                    {
+                        if(d.DepositId > maxId)
+                        {
+                            maxId = d.DepositId;
+                        }
+                    }
+                }
+
+                foreach (Customer c in customers)
+                {
+                    foreach (Withdrawal w in c.Withdrawals)
+                    {
+                        if (w.WithdrawalId > maxId)
+                        {
+                            maxId = w.WithdrawalId;
+                        }
+                    }
+                }
+
+                SetProperties(customer);
+                int results = CustomerManager.Update(customer, maxId);
                 Refresh();
             }
             catch (Exception ex)

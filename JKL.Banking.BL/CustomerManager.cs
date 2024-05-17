@@ -165,7 +165,7 @@ namespace JKL.Banking.BL
             }
         }
 
-        public static int Update(Customer customer, bool rollback = false)
+        public static int Update(Customer customer, int maxId, bool rollback = false)
         {
             try
             {
