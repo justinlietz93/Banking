@@ -65,6 +65,7 @@ namespace JKL.Banking.UI
                         withdrawal.WithdrawalId = customer.Withdrawals.Any() ? customer.Withdrawals.Max(a => a.WithdrawalId) + 1 : 1;
                         withdrawal.WithdrawalAmount = withdrawalAmount;
                         withdrawal.WithdrawalDate = dtpWithdrawalDate.Value.Date;
+                        withdrawal.CustID = customer.ID;
 
                         customer.Withdrawals.Add(withdrawal);
                     }

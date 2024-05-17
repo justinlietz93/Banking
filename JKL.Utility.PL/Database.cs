@@ -21,7 +21,7 @@ namespace JKL.Utility.PL
 
     {
 
-        const string ConnectionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=JKL.Banking.DB;Integrated Security=True";
+        const string ConnectionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=JKL.Banking.DB;Integrated Security=True;Connect Timeout=30;Encrypt=False;";
 
         // this needs to be typed out, then install package
 

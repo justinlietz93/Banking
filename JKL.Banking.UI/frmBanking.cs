@@ -350,7 +350,12 @@ namespace JKL.Banking.UI
 
                 Customer customer = new Customer();
 
-                customer.ID = customers.Max(c => c.ID) + 1;
+                customer.ID = 1;
+                if (customers.Any())
+                {
+                    customer.ID = customers.Max(c => c.ID) + 1;
+                }
+
                 SetProperties(customer);
 
                 customers.Add(customer);

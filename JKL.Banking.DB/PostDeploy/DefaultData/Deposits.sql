@@ -1,5 +1,5 @@
 ﻿BEGIN
-	INSERT INTO dbo.tblDeposits (ID, Amount, [Date], CustID)
+	INSERT INTO dbo.tblDeposits (ID, Amount, Date, CustID)
 	VALUES
 	(1, 1234.5, '2024-01-01', 1),
 	(2, 1500.75, '2023-12-15', 1),

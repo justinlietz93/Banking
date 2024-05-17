@@ -160,6 +160,23 @@ namespace JKL.Banking.BL
                 sqlCommand.Parameters.AddWithValue("@BirthDate", customer.BirthDate);
 
                 int results = db.Insert(sqlCommand, rollback);
+
+                //Insert deposits and withdrawals
+                if (customer.Deposits != null)
+                {
+                    foreach(Deposit deposit in customer.Deposits)
+                    {
+                        results += DepositManager.Insert(deposit, rollback);
+                    }
+                }
+                if (customer.Withdrawals != null)
+                {
+                    foreach (Withdrawal withdrawal in customer.Withdrawals)
+                    {
+                        results += WithdrawalManager.Insert(withdrawal, rollback);
+                    }
+                }
+
                 return results;
             }
             catch (Exception)

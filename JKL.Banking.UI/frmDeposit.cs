@@ -73,6 +73,7 @@ namespace JKL.Banking.UI
                         deposit.DepositId = customer.Deposits.Any() ? customer.Deposits.Max(a => a.DepositId) + 1 : 1;
                         deposit.DepositAmount = depositAmount;
                         deposit.DepositDate = dtpDepositDate.Value.Date;
+                        deposit.CustID = customer.ID;
 
                         customer.Deposits.Add(deposit);
                     }

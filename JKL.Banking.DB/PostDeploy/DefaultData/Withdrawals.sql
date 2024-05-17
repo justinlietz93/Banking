@@ -1,5 +1,5 @@
 ﻿BEGIN
-	INSERT INTO dbo.tblWithdrawals(ID, Amount, [Date], CustID)
+	INSERT INTO dbo.tblWithdrawals(ID, Amount, Date, CustID)
 	VALUES
 	(1, 500.25, '2024-01-05', 1),
 	(2, 1000, '2023-12-20', 1),
