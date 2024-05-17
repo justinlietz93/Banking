@@ -73,9 +73,7 @@
     <PostDeploy Include="PostDeploy\DefaultData\Customers.sql" />
     <None Include="PostDeploy\DefaultData\Deposits.sql" />
     <None Include="PostDeploy\DefaultData\Withdrawals.sql" />
-  </ItemGroup>
-  <ItemGroup>
-    <RefactorLog Include="JKL.Banking.DB.refactorlog" />
+    <None Include="PostDeploy\Script.PostDeployment1.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="local.publish.xml" />

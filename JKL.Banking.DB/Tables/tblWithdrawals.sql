@@ -1,7 +1,6 @@
-﻿CREATE TABLE [dbo].[tblWithdrawals]
-(
-	[ID] INT NOT NULL PRIMARY KEY, 
-    [Amount] FLOAT NOT NULL, 
-    [Date] DATE NOT NULL, 
-    [CustID] INT NOT NULL
-)
+﻿CREATE TABLE tblWithdrawals (
+    ID int PRIMARY KEY,
+    CustID int FOREIGN KEY REFERENCES tblCustomers(ID) NOT NULL,
+    Amount float NOT NULL,
+    Date datetime NOT NULL
+);

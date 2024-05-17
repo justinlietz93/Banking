@@ -129,6 +129,9 @@ namespace JKL.Banking.BL
                     customer.LastName = dr["LastName"].ToString();
                     customer.BirthDate = Convert.ToDateTime(dr["BirthDate"]);
 
+                    customer.Deposits = DepositManager.Load(customer.ID);
+                    customer.Withdrawals = WithdrawalManager.Load(customer.ID);
+
                     customers.Add((customer));
                 }
                 return customers;
@@ -147,7 +150,7 @@ namespace JKL.Banking.BL
                 SqlCommand sqlCommand = new SqlCommand();
 
                 string sql = "INSERT INTO tblCustomers (ID, SSN, FirstName, LastName, BirthDate)"
-                             + "VALUES (@ID, @SSN, @FirstName, @LastName @BirthDate)";
+                             + "VALUES (@ID, @SSN, @FirstName, @LastName, @BirthDate)";
 
                 sqlCommand.CommandText = sql;
                 sqlCommand.Parameters.AddWithValue("@ID", customer.ID);
@@ -172,10 +175,10 @@ namespace JKL.Banking.BL
                 Database db = new Database();
                 SqlCommand sqlCommand = new SqlCommand();
 
-                string sql = "UPDATE tblCustomers"
-                           + "SET SSN = @SSN, "
+                string sql = "UPDATE tblCustomers SET SSN = @SSN, "
                            + "FirstName = @FirstName, "
-                           + "LastName = @CustID, "
+                           + "LastName = @LastName, "
+                           + "BirthDate = @BirthDate "
                            + "WHERE ID = @Id";
 
                 sqlCommand.CommandText = sql;

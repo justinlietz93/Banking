@@ -28,8 +28,9 @@ namespace JKL.Banking.UI
                 lblStatus.Text = string.Empty;
 
                 // Populates listbox with customer info
-                customers = CustomerManager.ReadXML(settings.CustomerXMLFileName);
+                //customers = CustomerManager.ReadXML(settings.CustomerXMLFileName);
                 //customers = CustomerManager.Populate();
+                customers = CustomerManager.Load();
 
                 Refresh();
             }
@@ -225,11 +226,13 @@ namespace JKL.Banking.UI
                     dgvDeposits.DataSource = null;
                     dgvDeposits.DataSource = customer.Deposits;
                     dgvDeposits.Columns[0].Visible = false;
+                    dgvDeposits.Columns[1].Visible = false;
 
                     // Display withdrawal data
                     dgvWithdrawals.DataSource = null;
                     dgvWithdrawals.DataSource = customer.Withdrawals;
                     dgvWithdrawals.Columns[0].Visible = false;
+                    dgvWithdrawals.Columns[1].Visible = false;
 
                     AutoFillColWidth(dgvDeposits);
                     AutoFillColWidth(dgvWithdrawals);
@@ -257,6 +260,7 @@ namespace JKL.Banking.UI
 
             // Hide the deposit ID column
             window.Columns[0].Visible = false;
+            window.Columns[1].Visible = false;
         }
 
         private void dgvDeposits_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -345,13 +349,12 @@ namespace JKL.Banking.UI
                 lblStatus.Text = string.Empty;
 
                 Customer customer = new Customer();
+
                 customer.ID = customers.Max(c => c.ID) + 1;
                 SetProperties(customer);
 
-                customer.Deposits = new List<Deposit>();
-                customer.Withdrawals = new List<Withdrawal>();
-
                 customers.Add(customer);
+                int results = CustomerManager.Insert(customer);
                 Refresh();
             }
             catch (Exception ex)
