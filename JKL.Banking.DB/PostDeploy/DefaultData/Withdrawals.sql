@@ -1,13 +1,9 @@
-﻿BEGIN
-	INSERT INTO dbo.tblWithdrawals(ID, Amount, Date, CustID)
-	VALUES
-	(1, 500.25, '2024-01-05', 1),
-	(2, 1000, '2023-12-20', 1),
-	(3, 1000, '2023-11-10', 1),
-	(4, 300.75, '2023-10-15', 2),
-	(5, 150.50, '2023-09-30', 2),
-	(6, 100, '2023-08-25', 3),
-	(7, 75.25, '2023-07-10', 3)
-END
-GO
+﻿
+INSERT INTO [dbo].[tblWithdrawals] ([ID], [Amount], [Date], [CustID]) VALUES (1, 123.3, N'2023-05-05 00:00:00', 1)
+INSERT INTO [dbo].[tblWithdrawals] ([ID], [Amount], [Date], [CustID]) VALUES (2, 1320.2, N'2023-07-19 00:00:00', 1)
+INSERT INTO [dbo].[tblWithdrawals] ([ID], [Amount], [Date], [CustID]) VALUES (3, 1000.1, N'2023-01-01 00:00:00', 1)
+INSERT INTO [dbo].[tblWithdrawals] ([ID], [Amount], [Date], [CustID]) VALUES (4, 900, N'2024-10-20 00:00:00', 2)
+INSERT INTO [dbo].[tblWithdrawals] ([ID], [Amount], [Date], [CustID]) VALUES (5, 700, N'2020-10-10 00:00:00', 2)
+INSERT INTO [dbo].[tblWithdrawals] ([ID], [Amount], [Date], [CustID]) VALUES (6, 123.23, N'2023-08-10 00:00:00', 3)
+INSERT INTO [dbo].[tblWithdrawals] ([ID], [Amount], [Date], [CustID]) VALUES (7, 100, N'2024-01-01 00:00:00', 3)
 

@@ -22,6 +22,7 @@
     <SqlServerVerification>False</SqlServerVerification>
     <IncludeCompositeObjects>True</IncludeCompositeObjects>
     <TargetDatabaseSet>True</TargetDatabaseSet>
+    <IncludeSchemaNameInFileName>True</IncludeSchemaNameInFileName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <OutputPath>bin\Release\</OutputPath>
@@ -35,7 +36,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>C:\Users\jliet\source\repos\C# Intermediate\JKL.Banking\JKL.Banking.DB\bin\Debug\</OutputPath>
     <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
     <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
     <DebugSymbols>true</DebugSymbols>
@@ -66,16 +67,14 @@
   </ItemGroup>
   <ItemGroup>
     <Build Include="Tables\tblCustomers.sql" />
-    <Build Include="Tables\tblDeposits.sql" />
     <Build Include="Tables\tblWithdrawals.sql" />
+    <Build Include="Tables\tblDeposits.sql" />
   </ItemGroup>
   <ItemGroup>
-    <PostDeploy Include="PostDeploy\DefaultData\Customers.sql" />
+    <None Include="PostDeploy\DefaultData\Customers.sql" />
     <None Include="PostDeploy\DefaultData\Deposits.sql" />
     <None Include="PostDeploy\DefaultData\Withdrawals.sql" />
-    <None Include="PostDeploy\Script.PostDeployment.sql" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="JKL.Banking.DB.publish.xml" />
+    <PostDeploy Include="PostDeploy\Script.PostDeployment.sql" />
+    <None Include="local.publish.xml" />
   </ItemGroup>
 </Project>
