@@ -161,11 +161,13 @@ namespace JKL.Banking.BL
 
                 int results = db.Insert(sqlCommand, rollback);
 
-                //Insert deposits and withdrawals
+                // Insert deposits and withdrawals
                 if (customer.Deposits != null)
                 {
-                    foreach(Deposit deposit in customer.Deposits)
+                    foreach (Deposit deposit in customer.Deposits)
                     {
+                        // Ensure the deposit ID is unique
+                        deposit.DepositId = Database.GetNextDepositId();
                         results += DepositManager.Insert(deposit, rollback);
                     }
                 }
@@ -173,6 +175,8 @@ namespace JKL.Banking.BL
                 {
                     foreach (Withdrawal withdrawal in customer.Withdrawals)
                     {
+                        // Ensure the withdrawal ID is unique
+                        withdrawal.WithdrawalId = Database.GetNextWithdrawalId();
                         results += WithdrawalManager.Insert(withdrawal, rollback);
                     }
                 }

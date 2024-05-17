@@ -1,4 +1,6 @@
-﻿using JKL.Banking.BL.Models;
+﻿using JKL.Banking.BL;
+using JKL.Banking.BL.Models;
+using JKL.Utility.PL;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -62,12 +64,13 @@ namespace JKL.Banking.UI
                         Withdrawal withdrawal = new Withdrawal();
 
                         // Ternary operation
-                        withdrawal.WithdrawalId = customer.Withdrawals.Any() ? customer.Withdrawals.Max(a => a.WithdrawalId) + 1 : 1;
+                        withdrawal.WithdrawalId = Database.GetNextWithdrawalId();
                         withdrawal.WithdrawalAmount = withdrawalAmount;
                         withdrawal.WithdrawalDate = dtpWithdrawalDate.Value.Date;
                         withdrawal.CustID = customer.ID;
 
                         customer.Withdrawals.Add(withdrawal);
+                        int results = WithdrawalManager.Insert(withdrawal);
                     }
                     else
                     {
@@ -81,6 +84,7 @@ namespace JKL.Banking.UI
                     {
                         customer.Withdrawals[WithdrawalId].WithdrawalAmount = withdrawalAmount;
                         customer.Withdrawals[WithdrawalId].WithdrawalDate = DateTime.Parse(dtpWithdrawalDate.Text);
+                        int results = WithdrawalManager.Update(customer.Withdrawals[WithdrawalId]);
                     }
                     else
                     {

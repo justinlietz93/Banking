@@ -30,7 +30,7 @@ namespace JKL.Banking.UI
                 // Populates listbox with customer info
                 //customers = CustomerManager.ReadXML(settings.CustomerXMLFileName);
                 //customers = CustomerManager.Populate();
-                customers = CustomerManager.Load();
+
 
                 Refresh();
             }
@@ -44,6 +44,7 @@ namespace JKL.Banking.UI
 
         private void Refresh()
         {
+            customers = CustomerManager.Load();
             // Refreshes customer listbox
             lbxCustomers.DataSource = null;
             lbxCustomers.DataSource = customers;
@@ -51,6 +52,20 @@ namespace JKL.Banking.UI
             int numCustomers = customers.Count;
             lblStatus.ForeColor = Color.Blue;
             lblStatus.Text = numCustomers + " customers loaded.";
+
+            // Updates datagridview
+            dgvDeposits.DataSource = null;
+            dgvDeposits.DataSource = customers[lbxCustomers.SelectedIndex].Deposits;
+
+            // Hides ID column and maintains column width
+            AutoFillColWidth(dgvDeposits);
+
+            // Resets data source to show updated values
+            dgvWithdrawals.DataSource = null;
+            dgvWithdrawals.DataSource = customers[lbxCustomers.SelectedIndex].Withdrawals;
+
+            // Hides ID column and maintains column width
+            AutoFillColWidth(dgvWithdrawals);
         }
 
         private void btnAddDeposit_Click(object sender, EventArgs e)
@@ -69,12 +84,14 @@ namespace JKL.Banking.UI
                     depositForm.Customer = customers[lbxCustomers.SelectedIndex];
                     depositForm.ShowDialog();
 
-                    // Updates datagridview
-                    dgvDeposits.DataSource = null;
-                    dgvDeposits.DataSource = customers[lbxCustomers.SelectedIndex].Deposits;
+                    //// Updates datagridview
+                    //dgvDeposits.DataSource = null;
+                    //dgvDeposits.DataSource = customers[lbxCustomers.SelectedIndex].Deposits;
 
-                    // Hides ID column and maintains column width
-                    AutoFillColWidth(dgvDeposits);
+                    //// Hides ID column and maintains column width
+                    //AutoFillColWidth(dgvDeposits);
+
+                    Refresh();
                 }
                 else
                 {
@@ -142,12 +159,14 @@ namespace JKL.Banking.UI
                     withdrawalForm.Customer = customers[lbxCustomers.SelectedIndex];
                     withdrawalForm.ShowDialog();
 
-                    // Resets data source to show updated values
-                    dgvWithdrawals.DataSource = null;
-                    dgvWithdrawals.DataSource = customers[lbxCustomers.SelectedIndex].Withdrawals;
+                    //// Resets data source to show updated values
+                    //dgvWithdrawals.DataSource = null;
+                    //dgvWithdrawals.DataSource = customers[lbxCustomers.SelectedIndex].Withdrawals;
 
-                    // Hides ID column and maintains column width
-                    AutoFillColWidth(dgvWithdrawals);
+                    //// Hides ID column and maintains column width
+                    //AutoFillColWidth(dgvWithdrawals);
+
+                    Refresh();
                 }
                 else
                 {
@@ -331,6 +350,9 @@ namespace JKL.Banking.UI
                 customer.LastName = txtLastName.Text;
                 customer.BirthDate = dtpBirthDate.Value;
                 customer.SSN = txtSSN.Text;
+                customer.Deposits = new List<Deposit>();
+                customer.Withdrawals = new List<Withdrawal>();
+
 
             }
             catch (Exception ex)
@@ -379,8 +401,10 @@ namespace JKL.Banking.UI
 
                 if (lbxCustomers.SelectedIndex >= 0)
                 {
+                    Customer customer = customers[lbxCustomers.SelectedIndex];
                     // Remove the selected customer
-                    customers.Remove(customers[lbxCustomers.SelectedIndex]);
+                    customers.Remove(customer);
+                    int results = CustomerManager.Delete(customer.ID);
 
                     Refresh();
                     ClearScreen();

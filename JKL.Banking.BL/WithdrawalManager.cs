@@ -143,7 +143,7 @@ namespace JKL.Banking.BL
                              + "VALUES (@Id, @Amount, @Date, @CustID)";
 
                 sqlCommand.CommandText = sql;
-                sqlCommand.Parameters.AddWithValue("@Id", withdrawal.WithdrawalId);
+                sqlCommand.Parameters.AddWithValue("@Id", Database.GetNextWithdrawalId());
                 sqlCommand.Parameters.AddWithValue("@Amount", withdrawal.WithdrawalAmount);
                 sqlCommand.Parameters.AddWithValue("@Date", withdrawal.WithdrawalDate);
                 sqlCommand.Parameters.AddWithValue("@CustID", withdrawal.CustID);
@@ -164,10 +164,10 @@ namespace JKL.Banking.BL
                 Database db = new Database();
                 SqlCommand sqlCommand = new SqlCommand();
 
-                string sql = "UPDATE tblWithdrawals"
+                string sql = "UPDATE tblWithdrawals "
                            + "SET Amount = @Amount, "
                            + "Date = @Date, "
-                           + "CustID = @CustID, "
+                           + "CustID = @CustID "
                            + "WHERE ID = @Id";
 
                 sqlCommand.CommandText = sql;

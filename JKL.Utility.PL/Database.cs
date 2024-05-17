@@ -149,5 +149,35 @@ namespace JKL.Utility.PL
                 throw;
             }
         }
+
+        public static int GetNextDepositId()
+        {
+            int maxDepositId = 0;
+            string query = "SELECT ISNULL(MAX(ID), 0) FROM tblDeposits";
+
+            using (SqlConnection conn = new SqlConnection(ConnectionString))
+            {
+                SqlCommand cmd = new SqlCommand(query, conn);
+                conn.Open();
+                maxDepositId = (int)cmd.ExecuteScalar();
+            }
+
+            return maxDepositId + 1;
+        }
+
+        public static int GetNextWithdrawalId()
+        {
+            int maxWithdrawalId = 0;
+            string query = "SELECT ISNULL(MAX(ID), 0) FROM tblWithdrawals";
+
+            using (SqlConnection conn = new SqlConnection(ConnectionString))
+            {
+                SqlCommand cmd = new SqlCommand(query, conn);
+                conn.Open();
+                maxWithdrawalId = (int)cmd.ExecuteScalar();
+            }
+
+            return maxWithdrawalId + 1;
+        }
     }
 }

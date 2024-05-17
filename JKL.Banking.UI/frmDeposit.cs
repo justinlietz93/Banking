@@ -11,6 +11,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Net.Mime.MediaTypeNames;
 using System.Xml.Linq;
+using JKL.Banking.BL;
+using JKL.Utility.PL;
 
 namespace JKL.Banking.UI
 {
@@ -70,12 +72,13 @@ namespace JKL.Banking.UI
                         Deposit deposit = new Deposit();
 
                         // Ternary operation to increment id number
-                        deposit.DepositId = customer.Deposits.Any() ? customer.Deposits.Max(a => a.DepositId) + 1 : 1;
+                        deposit.DepositId = Database.GetNextDepositId();
                         deposit.DepositAmount = depositAmount;
                         deposit.DepositDate = dtpDepositDate.Value.Date;
                         deposit.CustID = customer.ID;
 
-                        customer.Deposits.Add(deposit);
+                        //customer.Deposits.Add(deposit);
+                        int results = DepositManager.Insert(deposit);
                     }
                     else
                     {
@@ -89,6 +92,7 @@ namespace JKL.Banking.UI
                     {
                         customer.Deposits[DepositId].DepositAmount = depositAmount;
                         customer.Deposits[DepositId].DepositDate = DateTime.Parse(dtpDepositDate.Text);
+                        int results = DepositManager.Update(customer.Deposits[DepositId]);
                     }
                     else
                     {
